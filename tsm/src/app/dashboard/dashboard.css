@@ -1,0 +1,329 @@
+/* General Dashboard Layout */
+.dashboard {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+}
+
+/* Headings */
+.dashboard h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+  letter-spacing: 1px;
+}
+
+.dashboard h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #334155;
+  font-size: 1.25rem;
+  border-left: 4px solid #4f46e5;
+  padding-left: 0.5rem;
+}
+
+/* Task Form */
+.task-form {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.task-form input {
+  width: calc(50% - 0.75rem);
+  padding: 0.7rem 1rem;
+  margin: 0.5rem 0.25rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.task-form input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
+}
+
+.task-form button {
+  display: inline-block;
+  margin: 0.5rem 0.25rem;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.task-form button:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+}
+
+/* Task List */
+.task-list {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.task-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.task-list li:hover {
+  background: #f1f5f9;
+  transform: translateX(3px);
+}
+
+.task-list span {
+  flex: 1;
+  font-size: 1rem;
+  color: #374151;
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+
+.task-list span.completed {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+/* Buttons inside Task List */
+.task-list button {
+  margin-left: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.task-list button:nth-child(1) {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.task-list button:nth-child(1):hover {
+  background: #2563eb;
+}
+
+.task-list button:nth-child(2) {
+  background: #ef4444;
+  color: #fff;
+}
+
+.task-list button:nth-child(2):hover {
+  background: #dc2626;
+}
+
+.task-list button:nth-child(3) {
+  background: #10b981;
+  color: #fff;
+}
+
+.task-list button:nth-child(3):hover {
+  background: #059669;
+}
+
+.custom-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+}
+
+.custom-checkbox input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+  cursor: not-allowed;
+}
+
+.custom-checkbox .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* When checked, show green background and a white checkmark */
+.custom-checkbox input:checked + .checkmark {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.custom-checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Checkmark shape */
+.custom-checkbox input:checked + .checkmark:after {
+  display: block;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+
+button {
+  margin-left: 8px;
+  border-radius: 6px 6px 6px 6px;
+  /* background-color: rgb(250, 0, 0);; */
+  border-color: aqua;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #f44336;
+  color: white;
+}
+
+
+.edit-completed {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+
+
+/* Background */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Box */
+.modal-content {
+  background: #fff;
+  padding: 15px 25px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  width: 250px;
+  font-size: 14px;
+}
+
+.modal-content h3 {
+  margin: 0 0 12px;
+  color: green;
+  font-size: 16px;
+}
+
+.modal-content button {
+  padding: 6px 14px;
+  border: none;
+  background: green;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* delete */
+
+.modal-content {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 260px;
+}
+
+.modal-content h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.modal-content button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:first-child {
+  background: rgb(235, 16, 16);
+  color: #fff;
+}
+
+.modal-content button:last-child {
+  background: rgb(128, 128, 128);
+  color: #fff;
+}
+
+/* logout */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 280px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
