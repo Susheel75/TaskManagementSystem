@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taskmanagementsystem-deployment
+  labels:
+    app: taskmanagementsystem
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: taskmanagementsystem
+  template:
+    metadata:
+      labels:
+        app: taskmanagementsystem
+    spec:
+      containers:
+        - name: taskmanagementsystem-app-container
+          image: taskmanagementsystem:latest
+          imagePullPolicy: IfNotPresent   # 👈 prevents pulling from DockerHub
+          ports:
+            - containerPort: 8083
