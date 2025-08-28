@@ -1,0 +1,115 @@
+<div class="dashboard">
+  <!-- Header with Logout -->
+  <div style="display: flex; justify-content: space-between; align-items: center">
+    <h2>Task Dashboard</h2>
+
+
+
+    <button (click)="logoutConfirm()">Logout</button>
+
+    <!-- Logout Confirmation Modal -->
+    <div *ngIf="showLogoutModal" class="modal">
+      <div class="modal-content">
+        <h3>Are you sure you want to logout?</h3>
+        <div style="margin-top: 15px; display: flex; justify-content: space-around;">
+          <button (click)="confirmLogout()">Yes</button>
+          <button (click)="cancelLogout()">No</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- Add Task -->
+  <div class="task-form">
+    <h3>Add Task</h3>
+    <input [(ngModel)]="newTask.title" placeholder="Task title" />
+    <input [(ngModel)]="newTask.description" placeholder="Task description" />
+    <label for="addDueDate">Due date</label>
+    <input id="addDueDate" type="date" [(ngModel)]="newTask.dueDate" />
+    <button (click)="addTask()">Add Task</button>
+  </div>
+
+  <!-- Success Modal -->
+  <div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <h3>{{ modalMessage }}</h3> <!-- dynamic message -->
+      <button (click)="closeModal()">OK</button>
+    </div>
+  </div>
+
+
+
+  <!-- Edit Task -->
+  <div *ngIf="editingTask" class="task-form">
+    <h3>Edit Task</h3>
+    <input [(ngModel)]="editingTask.title" placeholder="Task title" />
+    <input [(ngModel)]="editingTask.description" placeholder="Task description" />
+    <label for="editDueDate">Due date</label>
+    <input id="editDueDate" type="date" [(ngModel)]="editingTask.dueDate" />
+
+    <label class="edit-completed">
+      <input type="checkbox" [(ngModel)]="editingTask.completed" />
+      Completed
+    </label>
+
+    <!-- Completed checkbox -->
+    <!-- <label style="display: flex; align-items: center; gap: 6px; margin-top: 8px">
+      <input type="checkbox" [(ngModel)]="editingTask.completed" />
+      Completed
+    </label> -->
+
+    <button (click)="updateTask()">Update Task</button>
+    <button (click)="editingTask = null">Cancel</button>
+  </div>
+
+  <!-- Task Table -->
+  <div class="task-list">
+    <h3>All Tasks</h3>
+    <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; border-collapse: collapse">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Due Date</th>
+          <th>Completed</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>{{ task.title }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.dueDate | date : 'mediumDate' }}</td>
+          <td style="text-align: center">
+            <ng-container *ngIf="task.completed; else notCompleted">
+              <!--  Green checkmark -->
+              <span style="color: green; font-size: 20px">&#10004;</span>
+            </ng-container>
+            <ng-template #notCompleted>
+              <!--  Red cross -->
+              <span style="color: red; font-size: 20px">&#10060;</span>
+            </ng-template>
+          </td>
+          <td>
+            <button (click)="editTask(task)">Edit</button>
+            <button (click)="deleteTask(task.id!)">Delete</button>
+            <!-- Delete Confirmation Modal -->
+            <div *ngIf="showDeleteModal" class="modal">
+              <div class="modal-content">
+                <h3>Are you sure you want to delete this task?</h3>
+                <div style="margin-top: 15px; display: flex; justify-content: space-around;">
+                  <button (click)="confirmDelete()">Yes</button>
+                  <button (click)="cancelDelete()">No</button>
+                </div>
+              </div>
+            </div>
+
+            <button *ngIf="!task.completed" (click)="markComplete(task)">Mark Complete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

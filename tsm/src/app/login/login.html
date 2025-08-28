@@ -1,0 +1,46 @@
+<div class="login-container">
+  <h2>Login</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <!-- Email -->
+    <div>
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" placeholder="ex-susheel@gmail.com" />
+      <div class="error" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+        Enter a valid email
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div>
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" placeholder="********" />
+      <div class="error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+        Password must be at least 6 characters
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button type="submit" [disabled]="loginForm.invalid || isLoading">
+        {{ isLoading ? 'Logging in...' : 'Login' }}
+      </button>
+      <button type="button" (click)="onReset()">Reset</button>
+      <button type="button" (click)="onBack()">Back</button>
+    </div>
+  </form>
+
+  <!-- Signup link -->
+  <div class="signup-link">
+    Don't have an account? <a routerLink="/signup">Signup here</a>
+  </div>
+</div>
+
+<!-- ✅ Modal -->
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <h3>Login Successful</h3>
+    <p>Welcome back!</p>
+    <button (click)="closeModal()">OK</button>
+  </div>
+</div>
